@@ -665,14 +665,25 @@ footer { background: #141412; padding: 72px 48px 36px; }
   </ul>
 
   <div class="nav-right">
-    <button class="nav-icon-btn" title="Search">⌕</button>
+    <button class="nav-icon-btn" title="Axtarış" onclick="toggleSearch()">⌕</button>
     <button class="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" style="display:none; position:fixed; inset:0; background:rgba(28,28,26,.93); z-index:200; align-items:flex-start; justify-content:center; padding-top:120px;">
+  <div style="width:100%; max-width:680px; padding:0 24px;">
+    <div style="display:flex; align-items:center; background:var(--warm-white); border:2px solid var(--accent);">
+      <input id="search-input" type="text" placeholder="Məhsul axtar... (məs: Lavin, yataq, divan)"
+        style="flex:1; padding:18px 24px; font-family:var(--sans); font-size:16px; border:none; outline:none; background:transparent; color:var(--charcoal);"
+        oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+      <button onclick="closeSearch()" style="padding:18px 20px; background:none; border:none; font-size:22px; color:var(--mid); cursor:pointer;">✕</button>
+    </div>
+    <div id="search-results" style="background:var(--warm-white); margin-top:2px; max-height:420px; overflow-y:auto;"></div>
+  </div>
+</div>
 <section class="hero" style="padding:0;">
   <div class="hero-left">
     <div class="hero-deco"></div>
@@ -935,7 +946,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
     <div class="footer-col">
       <h4>Haqqımızda</h4>
       <ul>
-        <li><a href="#">Biz kimik?</a></li>
+        <li><a href="about.html">Biz kimik?</a></li>
         <li><a href="index.html#showrooms">Mağazalarımız</a></li>
       </ul>
     </div>
@@ -945,7 +956,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <ul>
         <li><a href="#">Çatdırılma və quraşdırma</a></li>
         <li><a href="#">Zəmanət</a></li>
-        <li><a href="#">Tez-tez verilən suallar</a></li>
+        <li><a href="faq.html">Tez-tez verilən suallar</a></li>
         <li><a href="https://wa.me/994703904656" target="_blank">Bizimlə əlaqə</a></li>
       </ul>
     </div>
@@ -966,6 +977,41 @@ const originalTitle = document.title;
 document.addEventListener('visibilitychange', () => {
   document.title = document.hidden ? 'Bizi unutma :)' : originalTitle;
 });
+
+// ── SEARCH ──
+const PRODUCTS = [
+  { name: 'Lavin Yataq Dəsti', cat: 'Yataq dəsti', price: '2,850 AZN', url: 'product-lavin.html', img: 'images/lavin-1.jpg' },
+  { name: 'Türk Yataq dəstləri', cat: 'Kolleksiya', price: '', url: 'bedroom.html', img: 'images/lavin-1.jpg' },
+];
+
+function toggleSearch() {
+  const o = document.getElementById('search-overlay');
+  const showing = o.style.display === 'flex';
+  o.style.display = showing ? 'none' : 'flex';
+  if (!showing) { document.getElementById('search-input').focus(); document.getElementById('search-results').innerHTML = ''; }
+}
+function closeSearch() { document.getElementById('search-overlay').style.display = 'none'; }
+
+function doSearch(q) {
+  const box = document.getElementById('search-results');
+  if (!q.trim()) { box.innerHTML = ''; return; }
+  const hits = PRODUCTS.filter(p => p.name.toLowerCase().includes(q.toLowerCase()) || p.cat.toLowerCase().includes(q.toLowerCase()));
+  if (!hits.length) {
+    box.innerHTML = '<p style="padding:20px 24px;color:var(--mid);font-size:14px;">Nəticə tapılmadı.</p>';
+    return;
+  }
+  box.innerHTML = hits.map(p => `
+    <a href="${p.url}" style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--light-border);text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='transparent'">
+      <img src="${p.img}" style="width:56px;height:44px;object-fit:cover;flex-shrink:0;">
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--charcoal);">${p.name}</div>
+        <div style="font-size:12px;color:var(--mid);">${p.cat}${p.price ? ' · ' + p.price : ''}</div>
+      </div>
+      <span style="margin-left:auto;color:var(--accent);font-size:18px;">→</span>
+    </a>`).join('');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
 
 // Filter buttons
 document.querySelectorAll('.filter-btn').forEach(btn => {
