@@ -230,7 +230,7 @@ section { padding: 96px 48px; }
 
 .cat-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 300px 300px;
   gap: 12px;
 }
@@ -239,8 +239,6 @@ section { padding: 96px 48px; }
   position: relative; overflow: hidden; cursor: pointer;
   background: #DDD8D0;
 }
-.cat-card:first-child { grid-row: 1 / 3; }
-.cat-card.wide { grid-column: span 2; }
 
 .cat-img {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -544,8 +542,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
 /* ── RESPONSIVE ── */
 @media (max-width: 1100px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
-  .cat-grid { grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px 280px; }
-  .cat-card:first-child { grid-row: 1 / 3; grid-column: 1; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 240px); }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
@@ -563,8 +560,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
   .newsletter { padding: 56px 20px; }
 
   .cat-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .cat-card { height: 220px; }
-  .cat-card:first-child { height: 280px; grid-column: 1 / 3; grid-row: 1; }
+  .cat-card { height: 180px; }
 
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
 
@@ -680,8 +676,8 @@ footer { background: #141412; padding: 72px 48px 36px; }
 <section class="hero" style="padding:0;">
   <div class="hero-left">
     <div class="hero-deco"></div>
-    <p class="hero-eyebrow">Soliton Mebel 2026</p>
-    <h1 class="hero-title">Xəyallarınızdakı<br>yaşama <em>toxunun.</em></h1>
+    <p class="hero-eyebrow">Soliton Mebel 2025</p>
+    <h1 class="hero-title">Xəyallarınızdakı<br>yaşamaya <em>toxunun.</em></h1>
     <p class="hero-desc">Ən gözəl anlarınızı bizimlə bölüşün.</p>
   </div>
   <div class="hero-right">
@@ -725,7 +721,9 @@ footer { background: #141412; padding: 72px 48px 36px; }
 
   <div class="cat-grid">
 
-    <!-- Türk Yataq dəstləri — tall left card -->
+    <!-- ROW 1: Turkish collections -->
+
+    <!-- Türk Yataq dəstləri -->
     <div class="cat-card reveal" onclick="location.href='bedroom.html'" style="cursor:pointer;">
       <img src="images/lavin-1.jpg" alt="Türk Yataq dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
@@ -735,12 +733,12 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <div class="cat-arrow">→</div>
     </div>
 
-    <!-- Türk qonaq dəstləri -->
+    <!-- Türk Qonaq dəstləri -->
     <div class="cat-card reveal">
-      <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=80" alt="Türk qonaq dəstləri" class="cat-img">
+      <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=80" alt="Türk Qonaq dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
       <div class="cat-info">
-        <div class="cat-title">Türk qonaq dəstləri</div>
+        <div class="cat-title">Türk Qonaq dəstləri</div>
       </div>
       <div class="cat-arrow">→</div>
     </div>
@@ -755,16 +753,17 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <div class="cat-arrow">→</div>
     </div>
 
-    <!-- Outlet -->
-    <div class="cat-card reveal" style="background:#2A2A28;">
-      <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=700&q=80" alt="Outlet" class="cat-img" style="opacity:.55;">
+    <!-- Türk künc divanları -->
+    <div class="cat-card reveal">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="Türk künc divanları" class="cat-img">
       <div class="cat-overlay"></div>
       <div class="cat-info">
-        <div class="cat-title">Outlet</div>
-        <div class="cat-count" style="color:var(--accent);">90%-ə qədər endirim</div>
+        <div class="cat-title">Türk künc divanları</div>
       </div>
-      <div class="cat-arrow" style="background:#C0473C;">→</div>
+      <div class="cat-arrow">→</div>
     </div>
+
+    <!-- ROW 2: Azerbaijan + Other -->
 
     <!-- Azərbaycan istehsalı yataq dəstləri -->
     <div class="cat-card reveal">
@@ -778,20 +777,10 @@ footer { background: #141412; padding: 72px 48px 36px; }
 
     <!-- Azərbaycan istehsalı divan dəstləri -->
     <div class="cat-card reveal">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="Azərbaycan istehsalı divan dəstləri" class="cat-img">
+      <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=700&q=80" alt="Azərbaycan istehsalı divan dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
       <div class="cat-info">
         <div class="cat-title">Azərbaycan istehsalı divan dəstləri</div>
-      </div>
-      <div class="cat-arrow">→</div>
-    </div>
-
-    <!-- Künc divanlar -->
-    <div class="cat-card reveal">
-      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Künc divanlar" class="cat-img">
-      <div class="cat-overlay"></div>
-      <div class="cat-info">
-        <div class="cat-title">Künc divanlar</div>
       </div>
       <div class="cat-arrow">→</div>
     </div>
@@ -804,6 +793,17 @@ footer { background: #141412; padding: 72px 48px 36px; }
         <div class="cat-title">Digər məhsullar</div>
       </div>
       <div class="cat-arrow">→</div>
+    </div>
+
+    <!-- Outlet -->
+    <div class="cat-card reveal" style="background:#2A2A28;">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Outlet" class="cat-img" style="opacity:.55;">
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-title">Outlet</div>
+        <div class="cat-count" style="color:var(--accent);">90%-ə qədər endirim</div>
+      </div>
+      <div class="cat-arrow" style="background:#C0473C;">→</div>
     </div>
 
   </div>
@@ -922,13 +922,13 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <h4>Kolleksiyamız</h4>
       <ul>
         <li><a href="bedroom.html">Türk Yataq dəstləri</a></li>
-        <li><a href="#">Türk qonaq dəstləri</a></li>
+        <li><a href="#">Türk Qonaq dəstləri</a></li>
         <li><a href="#">Türk divan dəstləri</a></li>
-        <li><a href="#">Outlet</a></li>
+        <li><a href="#">Türk künc divanları</a></li>
         <li><a href="#">Azərbaycan istehsalı yataq dəstləri</a></li>
         <li><a href="#">Azərbaycan istehsalı divan dəstləri</a></li>
-        <li><a href="#">Künc divanlar</a></li>
         <li><a href="#">Digər məhsullar</a></li>
+        <li><a href="#">Outlet</a></li>
       </ul>
     </div>
 
