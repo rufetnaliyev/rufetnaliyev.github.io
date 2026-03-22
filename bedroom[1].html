@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedroom — Soliton Mebel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F7F4EF;
+  --warm-white: #FDFCF9;
+  --charcoal: #1C1C1A;
+  --mid: #6B6860;
+  --accent: #B8946A;
+  --light-border: #E4DDD3;
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 72px;
+  background: rgba(253,252,249,0.94); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--light-border);
+}
+.nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: .12em; color: var(--charcoal); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--charcoal); }
+.nav-links a.active { border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-icon-btn { background: none; border: none; cursor: pointer; color: var(--mid); font-size: 18px; padding: 4px; transition: color .2s; }
+.nav-icon-btn:hover { color: var(--charcoal); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); margin: 5px 0; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  margin-top: 72px;
+  height: 340px;
+  position: relative; overflow: hidden;
+  background: var(--charcoal);
+  display: flex; align-items: center;
+}
+.page-hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .35;
+}
+.page-hero-pattern {
+  position: absolute; inset: 0; opacity: .03;
+  background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+  background-size: 18px 18px;
+}
+.page-hero-content {
+  position: relative; z-index: 2; padding: 0 64px;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-bottom: 20px;
+}
+.breadcrumb a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+.breadcrumb a:hover { color: rgba(255,255,255,.7); }
+.breadcrumb span { color: rgba(255,255,255,.2); }
+.page-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 300; color: #fff; line-height: 1.1;
+}
+.page-hero-title em { font-style: italic; color: var(--accent); }
+.page-hero-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 12px; letter-spacing: .04em; }
+
+/* ── FILTER BAR ── */
+.filter-section {
+  background: var(--cream);
+  padding: 24px 64px;
+  border-bottom: 1px solid var(--light-border);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-chip {
+  padding: 7px 18px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  background: none; border: 1px solid var(--light-border);
+  color: var(--mid); cursor: pointer; font-family: var(--sans);
+  transition: all .2s;
+}
+.filter-chip:hover, .filter-chip.active {
+  background: var(--charcoal); color: var(--warm-white); border-color: var(--charcoal);
+}
+.sort-select {
+  padding: 7px 16px; font-size: 11px; letter-spacing: .1em;
+  background: var(--warm-white); border: 1px solid var(--light-border);
+  color: var(--mid); font-family: var(--sans); cursor: pointer; outline: none;
+}
+.results-count { font-size: 12px; color: var(--mid); letter-spacing: .05em; }
+
+/* ── PRODUCTS GRID ── */
+.products-section { padding: 56px 64px 96px; }
+
+.product-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+
+.product-card {
+  background: var(--warm-white); cursor: pointer;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--light-border);
+  transition: border-color .3s, box-shadow .3s;
+}
+.product-card:hover {
+  border-color: #C8BFB5;
+  box-shadow: 0 8px 32px rgba(28,28,26,.07);
+}
+
+.product-img-wrap {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4/3; background: var(--cream);
+}
+.product-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s ease;
+}
+.product-card:hover .product-img { transform: scale(1.05); }
+
+.product-badge {
+  position: absolute; top: 14px; left: 14px;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  padding: 5px 10px;
+}
+.badge-new { background: var(--accent); color: #fff; }
+.badge-sale { background: #C0473C; color: #fff; }
+.badge-discount { background: var(--charcoal); color: #fff; }
+
+/* thumbnail strip */
+.thumb-strip {
+  display: flex; gap: 6px; padding: 10px 14px 0;
+  background: var(--cream);
+}
+.thumb {
+  width: 52px; height: 40px; object-fit: cover; cursor: pointer;
+  border: 2px solid transparent; transition: border-color .2s; flex-shrink: 0;
+}
+.thumb.active, .thumb:hover { border-color: var(--accent); }
+
+.product-info { padding: 18px 18px 22px; }
+.product-cat { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+.product-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
+
+.price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+.price-current { font-size: 20px; font-weight: 500; color: var(--charcoal); }
+.price-old { font-size: 14px; color: var(--mid); text-decoration: line-through; font-weight: 300; }
+.price-save {
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 8px; background: #FDECEA; color: #C0473C;
+}
+
+.product-actions {
+  display: flex; gap: 8px;
+}
+.btn-view {
+  flex: 1; padding: 11px 0; text-align: center;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  background: var(--charcoal); color: var(--warm-white);
+  border: none; cursor: pointer; font-family: var(--sans);
+  text-decoration: none; display: block;
+  transition: background .2s;
+}
+.btn-view:hover { background: var(--accent); }
+.btn-wish {
+  width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--light-border); background: none; cursor: pointer;
+  font-size: 16px; color: var(--mid); transition: all .2s;
+}
+.btn-wish:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── FOOTER ── */
+footer { background: #141412; padding: 64px 48px 32px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand-logo { font-family: var(--serif); font-size: 28px; font-weight: 300; letter-spacing: .1em; color: #fff; display: block; text-decoration: none; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,.35); max-width: 240px; margin-bottom: 24px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-social { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.35); font-size: 12px; text-decoration: none; transition: border-color .2s, color .2s; }
+.footer-social:hover { border-color: var(--accent); color: var(--accent); }
+.footer-col h4 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 18px; font-weight: 500; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a { font-size: 13px; color: rgba(255,255,255,.33); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: rgba(255,255,255,.8); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,.22); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,.22); text-decoration: none; }
+.footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .page-hero-content { padding: 0 24px; }
+  .filter-section { padding: 16px 20px; }
+  .products-section { padding: 40px 20px 72px; }
+  .product-grid { grid-template-columns: 1fr; gap: 16px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">SOLITON MEBEL</a>
+  <ul class="nav-links">
+    <li><a href="index.html#categories">Collections</a></li>
+    <li><a href="bedroom.html" class="active">Bedroom</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#footer">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" title="Search">⌕</button>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=80" alt="Bedroom" class="page-hero-img">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Bedroom</span>
+    </div>
+    <h1 class="page-hero-title"><em>Bedroom</em> Collection</h1>
+    <p class="page-hero-sub">Thoughtfully designed spaces for rest and renewal</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-section">
+  <div class="filter-group">
+    <button class="filter-chip active">All</button>
+    <button class="filter-chip">New Arrivals</button>
+    <button class="filter-chip">On Sale</button>
+    <button class="filter-chip">Classic</button>
+    <button class="filter-chip">Modern</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span class="results-count" id="results-count">1 model</span>
+    <select class="sort-select">
+      <option>Sort: Featured</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+      <option>Newest First</option>
+    </select>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section">
+  <div class="product-grid">
+
+    <!-- LAVIN BEDROOM -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img
+          src="/mnt/user-data/uploads/1774209978948_image.png"
+          alt="Lavin Bedroom"
+          class="product-img"
+          id="lavin-main-img">
+        <span class="product-badge badge-discount">-25%</span>
+      </div>
+      <div class="thumb-strip">
+        <img src="/mnt/user-data/uploads/1774209978948_image.png" class="thumb active" onclick="switchImg(this,'lavin-main-img')" alt="View 1">
+        <img src="/mnt/user-data/uploads/1774210006492_image.png" class="thumb" onclick="switchImg(this,'lavin-main-img')" alt="View 2">
+      </div>
+      <div class="product-info">
+        <p class="product-cat">Bedroom</p>
+        <p class="product-name">Lavin Bedroom</p>
+        <div class="price-row">
+          <span class="price-current">2,850 AZN</span>
+          <span class="price-old">3,800 AZN</span>
+          <span class="price-save">Save 950 AZN</span>
+        </div>
+        <div class="product-actions">
+          <a href="product-lavin.html" class="btn-view">View Details</a>
+          <button class="btn-wish" title="Wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-brand-logo">SOLITON MEBEL</a>
+      <p class="footer-brand-desc">Timeless furniture for the modern home. Crafted with care, delivered with pride since 2015.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social">in</a>
+        <a href="#" class="footer-social">ig</a>
+        <a href="#" class="footer-social">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="bedroom.html">Bedroom</a></li>
+        <li><a href="#">Dining Room</a></li>
+        <li><a href="#">Sofas</a></li>
+        <li><a href="#">Outlet</a></li>
+        <li><a href="#">New Bedrooms</a></li>
+        <li><a href="#">New Sofas</a></li>
+        <li><a href="#">New Dining Rooms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Showrooms</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Customer Care</h4>
+      <ul>
+        <li><a href="#">Delivery & Returns</a></li>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">Custom Orders</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Soliton Mebel. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Image switcher for thumbnails
+function switchImg(thumb, mainId) {
+  document.getElementById(mainId).src = thumb.src;
+  thumb.closest('.thumb-strip').querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+// Filter chips
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
