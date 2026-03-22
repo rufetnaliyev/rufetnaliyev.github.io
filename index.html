@@ -963,6 +963,12 @@ footer { background: #141412; padding: 72px 48px 36px; }
 </footer>
 
 <script>
+// "Bizi unutma" tab title when user switches away
+const originalTitle = document.title;
+document.addEventListener('visibilitychange', () => {
+  document.title = document.hidden ? 'Bizi unutma :)' : originalTitle;
+});
+
 // Filter buttons
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
