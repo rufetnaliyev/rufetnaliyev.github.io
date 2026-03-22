@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MADERA — Furniture Showroom</title>
+<title>Soliton Mebel — Mebel Salonu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,8 +16,8 @@
   --mid: #6B6860;
   --accent: #B8946A;
   --light-border: #E4DDD3;
-  --serif: 'Cormorant Garamond', serif;
-  --sans: 'Jost', sans-serif;
+  --serif: 'Playfair Display', serif;
+  --sans: 'Nunito', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -589,6 +589,71 @@ footer { background: #141412; padding: 72px 48px 36px; }
   .banner-content { padding: 0 24px; }
   .banner-img-full { display: none; }
 }
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45);
+  text-decoration: none;
+  transition: transform .25s, box-shadow .25s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,.6);
+}
+.whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+.whatsapp-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--charcoal); color: #fff;
+  font-size: 12px; letter-spacing: .06em;
+  padding: 6px 12px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s;
+}
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+/* ── SHOWROOMS ── */
+.showrooms {
+  padding: 80px 48px;
+  background: var(--cream);
+}
+.showrooms-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 48px;
+}
+.showroom-card {
+  background: var(--warm-white);
+  border: 1px solid var(--light-border);
+  overflow: hidden;
+}
+.showroom-map {
+  width: 100%; height: 260px; border: none; display: block;
+  filter: grayscale(20%);
+}
+.showroom-info { padding: 20px 24px 24px; }
+.showroom-name {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  margin-bottom: 8px;
+}
+.showroom-address {
+  font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 16px;
+}
+.showroom-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--light-border); padding-bottom: 2px;
+  transition: border-color .2s;
+}
+.showroom-link:hover { border-color: var(--accent); }
+
+@media (max-width: 768px) {
+  .showrooms-grid { grid-template-columns: 1fr; }
+  .showrooms { padding: 56px 20px; }
+  .whatsapp-float { bottom: 18px; right: 18px; }
+}
 </style>
 </head>
 <body>
@@ -631,21 +696,21 @@ footer { background: #141412; padding: 72px 48px 36px; }
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <div class="ticker-item"><span class="ticker-dot"></span>Türk Yataq dəstləri</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Qonaq dəstləri</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Divan dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Türk qonaq dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Türk divan dəstləri</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Outlet</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Azərbaycan istehsalı yataq dəstləri</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Azərbaycan istehsalı divan dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Künc divanlar</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Digər məhsullar</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Pulsuz çatdırılma</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Türk Yataq dəstləri</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Qonaq dəstləri</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Divan dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Türk qonaq dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Türk divan dəstləri</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Outlet</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Azərbaycan istehsalı yataq dəstləri</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Azərbaycan istehsalı divan dəstləri</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Künc divanlar</div>
     <div class="ticker-item"><span class="ticker-dot"></span>Digər məhsullar</div>
-    <div class="ticker-item"><span class="ticker-dot"></span>Pulsuz çatdırılma</div>
   </div>
 </div>
 
@@ -660,7 +725,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
 
   <div class="cat-grid">
 
-    <!-- Bedroom — tall left card -->
+    <!-- Türk Yataq dəstləri — tall left card -->
     <div class="cat-card reveal" onclick="location.href='bedroom.html'" style="cursor:pointer;">
       <img src="images/lavin-1.jpg" alt="Türk Yataq dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
@@ -670,22 +735,22 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <div class="cat-arrow">→</div>
     </div>
 
-    <!-- Qonaq dəstləri -->
+    <!-- Türk qonaq dəstləri -->
     <div class="cat-card reveal">
-      <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=80" alt="Qonaq dəstləri" class="cat-img">
+      <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=80" alt="Türk qonaq dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
       <div class="cat-info">
-        <div class="cat-title">Qonaq dəstləri</div>
+        <div class="cat-title">Türk qonaq dəstləri</div>
       </div>
       <div class="cat-arrow">→</div>
     </div>
 
-    <!-- Divan dəstləri -->
+    <!-- Türk divan dəstləri -->
     <div class="cat-card reveal">
-      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Divan dəstləri" class="cat-img">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Türk divan dəstləri" class="cat-img">
       <div class="cat-overlay"></div>
       <div class="cat-info">
-        <div class="cat-title">Divan dəstləri</div>
+        <div class="cat-title">Türk divan dəstləri</div>
       </div>
       <div class="cat-arrow">→</div>
     </div>
@@ -717,6 +782,16 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <div class="cat-overlay"></div>
       <div class="cat-info">
         <div class="cat-title">Azərbaycan istehsalı divan dəstləri</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+
+    <!-- Künc divanlar -->
+    <div class="cat-card reveal">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Künc divanlar" class="cat-img">
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-title">Künc divanlar</div>
       </div>
       <div class="cat-arrow">→</div>
     </div>
@@ -784,6 +859,57 @@ footer { background: #141412; padding: 72px 48px 36px; }
 
 
 
+<!-- ── SHOWROOMS ── -->
+<section class="showrooms" id="showrooms">
+  <div class="section-header reveal">
+    <div>
+      <p class="eyebrow">Mağazalarımız</p>
+      <h2 class="section-title">Bizi <em>Ziyarət Edin</em></h2>
+    </div>
+  </div>
+  <div class="showrooms-grid">
+
+    <div class="showroom-card reveal">
+      <iframe
+        class="showroom-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.4!2d49.9088125!3d40.3919375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403063625194de9d%3A0x1ec8764b314edd7!2sKilim%20-%20Bab%C9%99k!5e0!3m2!1saz!2saz!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="showroom-info">
+        <h3 class="showroom-name">Kilim — Babək mağazası</h3>
+        <p class="showroom-address">Babək prospekti, Bakı, Azərbaycan</p>
+        <a href="https://www.google.com/maps/place/Kilim+-+Bab%C9%99k/@40.3919375,49.9088125,17z" target="_blank" class="showroom-link">
+          Xəritədə aç →
+        </a>
+      </div>
+    </div>
+
+    <div class="showroom-card reveal">
+      <iframe
+        class="showroom-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.2!2d49.9189293!3d40.392252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403063898516a583%3A0x809f8f7dfbc65388!2sMondi%20Bab%C9%99k%20prospekti!5e0!3m2!1saz!2saz!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="showroom-info">
+        <h3 class="showroom-name">Mondi — Babək mağazası</h3>
+        <p class="showroom-address">Babək prospekti, Bakı, Azərbaycan</p>
+        <a href="https://www.google.com/maps/place/Mondi+Bab%C9%99k+prospekti/@40.392252,49.9189293,17z" target="_blank" class="showroom-link">
+          Xəritədə aç →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/994703904656" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">WhatsApp ilə yazın</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
 <!-- ── FOOTER ── -->
 <footer id="footer">
   <div class="footer-top">
@@ -796,11 +922,12 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <h4>Kolleksiyamız</h4>
       <ul>
         <li><a href="bedroom.html">Türk Yataq dəstləri</a></li>
-        <li><a href="#">Qonaq dəstləri</a></li>
-        <li><a href="#">Divan dəstləri</a></li>
+        <li><a href="#">Türk qonaq dəstləri</a></li>
+        <li><a href="#">Türk divan dəstləri</a></li>
         <li><a href="#">Outlet</a></li>
         <li><a href="#">Azərbaycan istehsalı yataq dəstləri</a></li>
         <li><a href="#">Azərbaycan istehsalı divan dəstləri</a></li>
+        <li><a href="#">Künc divanlar</a></li>
         <li><a href="#">Digər məhsullar</a></li>
       </ul>
     </div>
@@ -820,7 +947,6 @@ footer { background: #141412; padding: 72px 48px 36px; }
       <ul>
         <li><a href="#">Çatdırılma və qaytarma</a></li>
         <li><a href="#">Zəmanət</a></li>
-        <li><a href="#">Sifarişi izlə</a></li>
         <li><a href="#">Tez-tez verilən suallar</a></li>
         <li><a href="#">Bizimlə əlaqə</a></li>
       </ul>
@@ -828,7 +954,7 @@ footer { background: #141412; padding: 72px 48px 36px; }
   </div>
 
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Soliton Mebel. Bütün hüquqlar qorunur.</p>
+    <p class="footer-copy">© 2026 Soliton Mebel. Bütün hüquqlar qorunur.</p>
     <div class="footer-legal">
       <a href="#">Məxfilik siyasəti</a>
       <a href="#">İstifadə şərtləri</a>
