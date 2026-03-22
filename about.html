@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biz kimik? — SOLİTON MEBEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#F7F4EF;--warm-white:#FDFCF9;--charcoal:#1C1C1A;--mid:#6B6860;--accent:#B8946A;--light-border:#E4DDD3;--serif:'Playfair Display',serif;--sans:'Nunito',sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--warm-white);color:var(--charcoal);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(253,252,249,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--light-border)}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.08em;color:var(--charcoal);text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--charcoal)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--mid);font-size:18px;padding:4px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--charcoal);margin:5px 0}
+.page-hero{margin-top:72px;height:300px;position:relative;overflow:hidden;background:var(--charcoal);display:flex;align-items:center}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25}
+.page-hero-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:18px 18px}
+.page-hero-content{position:relative;z-index:2;padding:0 64px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}
+.breadcrumb span{color:rgba(255,255,255,.2)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(36px,4vw,58px);font-weight:400;color:#fff;line-height:1.1}
+.page-hero-title em{font-style:italic;color:var(--accent)}
+.about-section{padding:72px 48px 96px;max-width:900px;margin:0 auto}
+.about-lead{font-family:var(--serif);font-size:clamp(22px,2.5vw,30px);font-weight:400;line-height:1.55;color:var(--charcoal);margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid var(--light-border)}
+.about-lead em{font-style:italic;color:var(--accent)}
+.about-body{font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:40px}
+.about-body p{margin-bottom:20px}
+.about-body strong{color:var(--charcoal);font-weight:600}
+.brands-block{margin:48px 0;padding:32px 36px;background:var(--cream);border-left:3px solid var(--accent)}
+.brands-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
+.brands-list{font-size:16px;font-weight:600;color:var(--charcoal);line-height:1.8;letter-spacing:.02em}
+.promise-block{margin:48px 0}
+.promise-title{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:24px}
+.promise-title em{font-style:italic;color:var(--accent)}
+.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.promise-item{padding:22px 24px;background:var(--cream);border-left:2px solid var(--light-border);transition:border-color .2s}
+.promise-item:hover{border-left-color:var(--accent)}
+.promise-icon{font-size:20px;color:var(--accent);margin-bottom:10px;display:block}
+.promise-text{font-size:14px;line-height:1.75;color:var(--mid)}
+.promise-text strong{color:var(--charcoal);display:block;margin-bottom:4px;font-size:15px}
+.about-cta{margin-top:56px;padding:40px;background:var(--charcoal);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.about-cta-text h3{font-family:var(--serif);font-size:26px;font-weight:400;color:#fff;margin-bottom:6px}
+.about-cta-text p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.7}
+.btn-accent{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .2s;white-space:nowrap}
+.btn-accent:hover{background:#a07e58}
+.btn-accent svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:transform .25s}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+.whatsapp-tooltip{position:absolute;right:68px;top:50%;transform:translateY(-50%);background:var(--charcoal);color:#fff;font-size:12px;padding:6px 12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.whatsapp-float:hover .whatsapp-tooltip{opacity:1}
+footer{background:#141412;padding:64px 48px 32px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand-logo{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:.08em;color:#fff;display:block;text-decoration:none;margin-bottom:14px}
+.footer-brand-desc{font-size:13px;line-height:1.8;color:rgba(255,255,255,.35);max-width:240px}
+.footer-col h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:18px;font-weight:600}
+.footer-col ul{list-style:none}.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.33);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.22)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,.22);text-decoration:none}
+.footer-legal a:hover{color:rgba(255,255,255,.5)}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.hamburger{display:block}.page-hero-content{padding:0 24px}.about-section{padding:48px 20px 72px}.promise-grid{grid-template-columns:1fr}.about-cta{flex-direction:column;padding:28px}.footer-top{grid-template-columns:1fr 1fr;gap:28px}.footer-bottom{flex-direction:column;gap:12px}.whatsapp-float{bottom:18px;right:18px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">SOLİTON MEBEL</a>
+  <ul class="nav-links">
+    <li><a href="index.html#categories">Kolleksiyamız</a></li>
+    <li><a href="about.html" class="active">Haqqımızda</a></li>
+    <li><a href="index.html#footer">Əlaqə</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn">⌕</button>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="page-hero">
+  <img src="images/lavin-1.jpg" alt="SOLİTON MEBEL" class="page-hero-img">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Ana səhifə</a><span>/</span><span style="color:rgba(255,255,255,.7)">Biz kimik?</span></div>
+    <h1 class="page-hero-title">Biz <em>kimik?</em></h1>
+  </div>
+</div>
+<div class="about-section">
+  <p class="about-lead reveal">Biz müştərilərimizə keyfiyyətli, funksional və estetik mebel həlləri təqdim edən <em>peşəkar komandayıq.</em></p>
+  <div class="about-body reveal">
+    <p>Məqsədimiz yalnız mebel satmaq deyil, eviniz və iş məkanınız üçün rahatlıq və zövq yaradan mühit qurmaqdır.</p>
+    <p>Fəaliyyətimiz müddətində həm yerli, həm də beynəlxalq tanınmış brendlərlə əməkdaşlıq edərək müştərilərimizə geniş seçim imkanı təqdim edirik.</p>
+    <p>Məhsul çeşidimizə yataq otağı, qonaq otağı, divan dəstləri, uşaq mebelləri, mətbəx və digər interyer həlləri daxildir. Hər bir məhsul keyfiyyət, davamlılıq və dizayn baxımından diqqətlə seçilir.</p>
+    <p><strong>35 ildən çoxdur</strong> Azərbaycanda fərqli sektorlarda fəaliyyət göstərən bir şirkət olaraq 15 ildir mebel sahəsində də keyfiyyətli markalarla işləyərək, bu bazarın da önəmli bir hissəsi olmuşuq.</p>
+  </div>
+  <div class="brands-block reveal">
+    <p class="brands-label">Bizimlə əməkdaşlıq edən brendlər</p>
+    <p class="brands-list">Kilim · Mondi · Area · Gautier · Always Star · Caploonba · Newjoy</p>
+  </div>
+  <div class="promise-block reveal">
+    <h2 class="promise-title">Müştəri məmnuniyyəti bizim üçün <em>ən önəmli prioritetdir</em></h2>
+    <div class="promise-grid">
+      <div class="promise-item"><span class="promise-icon">◈</span><p class="promise-text"><strong>Fərdi ölçü və dizayn</strong>İstəyinizə uyğun ölçü və dizayn imkanları təqdim edirik.</p></div>
+      <div class="promise-item"><span class="promise-icon">✦</span><p class="promise-text"><strong>Çatdırılma və quraşdırma</strong>Peşəkar çatdırılma və quraşdırma xidməti göstəririk.</p></div>
+      <div class="promise-item"><span class="promise-icon">⟐</span><p class="promise-text"><strong>Zəmanətli məhsullar</strong>Zəmanətli və etibarlı məhsullar təklif edirik.</p></div>
+      <div class="promise-item"><span class="promise-icon">◎</span><p class="promise-text"><strong>Rahat ödəniş imkanları</strong>Nağd, taksit, köçürmə və kredit imkanlarımız sayəsində hər bir müştərinin ödəniş qabiliyyətini nəzərə alırıq.</p></div>
+    </div>
+  </div>
+  <div class="about-cta reveal">
+    <div class="about-cta-text">
+      <h3>Bizimlə siz sadəcə mebel almırsınız</h3>
+      <p>Eviniz üçün düzgün seçim edirsiniz.</p>
+    </div>
+    <a href="https://wa.me/994703904656" target="_blank" class="btn-accent">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Bizimlə əlaqə
+    </a>
+  </div>
+</div>
+<a href="https://wa.me/994703904656" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">WhatsApp ilə yazın</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-brand-logo">SOLİTON MEBEL</a>
+      <p class="footer-brand-desc">Evinizin hər küncünü bizim məhsullarımızla bəzəyin.</p>
+    </div>
+    <div class="footer-col"><h4>Kolleksiyamız</h4><ul>
+      <li><a href="bedroom.html">Türk Yataq dəstləri</a></li>
+      <li><a href="#">Türk Qonaq dəstləri</a></li>
+      <li><a href="#">Türk divan dəstləri</a></li>
+      <li><a href="#">Türk künc divanları</a></li>
+      <li><a href="#">Azərbaycan istehsalı yataq dəstləri</a></li>
+      <li><a href="#">Azərbaycan istehsalı divan dəstləri</a></li>
+      <li><a href="#">Digər məhsullar</a></li>
+      <li><a href="#">Outlet</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Haqqımızda</h4><ul>
+      <li><a href="about.html">Biz kimik?</a></li>
+      <li><a href="index.html#showrooms">Mağazalarımız</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>MÜŞTƏRİ XİDMƏTİ</h4><ul>
+      <li><a href="#">Çatdırılma və quraşdırma</a></li>
+      <li><a href="#">Zəmanət</a></li>
+      <li><a href="faq.html">Tez-tez verilən suallar</a></li>
+      <li><a href="https://wa.me/994703904656" target="_blank">Bizimlə əlaqə</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 SOLİTON MEBEL. Bütün hüquqlar qorunur.</p>
+    <div class="footer-legal"><a href="#">Məxfilik siyasəti</a><a href="#">İstifadə şərtləri</a></div>
+  </div>
+</footer>
+<script>
+const originalTitle = document.title;
+document.addEventListener('visibilitychange', () => { document.title = document.hidden ? 'Bizi unutma :)' : originalTitle; });
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
