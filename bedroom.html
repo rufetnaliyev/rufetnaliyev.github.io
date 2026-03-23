@@ -104,6 +104,7 @@ nav {
 .product-badge { position: absolute; top: 14px; left: 14px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; }
 .badge-discount { background: var(--charcoal); color: #fff; }
 .badge-sale { background: #C0473C; color: #fff; }
+.badge-last { background: #7A3B2E; color: #fff; }
 
 .thumb-strip { display: flex; gap: 6px; padding: 10px 14px 0; background: var(--cream); }
 .thumb { width: 52px; height: 40px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: border-color .2s; flex-shrink: 0; }
@@ -113,10 +114,16 @@ nav {
 .product-cat { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
 .product-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
 
-.price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .price-current { font-size: 16px; font-weight: 600; color: var(--charcoal); }
 .price-old { font-size: 14px; color: var(--mid); text-decoration: line-through; font-weight: 300; }
 .price-save { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; background: #FDECEA; color: #C0473C; }
+
+.price-note {
+  font-size: 11px; line-height: 1.6; color: var(--mid);
+  margin-bottom: 14px; border-left: 2px solid var(--light-border);
+  padding-left: 8px;
+}
 
 .product-actions { display: flex; gap: 8px; }
 .btn-view {
@@ -127,17 +134,8 @@ nav {
   text-decoration: none; display: block; transition: background .2s;
 }
 .btn-view:hover { background: var(--accent); }
-.btn-wish {
-  width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--light-border); background: none; cursor: pointer;
-  font-size: 16px; color: var(--mid); transition: all .2s;
-}
-.btn-wish:hover { border-color: var(--accent); color: var(--accent); }
 
 .price-tbd { font-size: 14px; color: var(--accent); font-weight: 600; letter-spacing: .04em; }
-
-.badge-last { background: #C0473C; color: #fff; top: 14px; left: 14px; }
-.price-note-text { font-size: 11px; line-height: 1.6; color: var(--mid); margin-bottom: 12px; padding: 8px 10px; background: var(--cream); border-left: 2px solid var(--light-border); }
 
 /* ── REVEAL ── */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
@@ -242,7 +240,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- LAVIN -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/lavin-1.jpg" alt="Lavin Yataq dəsti" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="lavin-main-img">
+        <img src="images/lavin-1.jpg" alt="Lavin Yataq dəsti" class="product-img" loading="lazy" id="lavin-main-img">
         <span class="product-badge badge-discount">-25%</span>
       </div>
       <div class="thumb-strip">
@@ -256,7 +254,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
           <span class="price-current">2,850 AZN</span>
           <span class="price-old">3,800 AZN</span>
           <span class="price-save">950 AZN endirim</span>
-                <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        </div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-lavin.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -266,7 +265,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- VEYRON -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/veyron-1.jpg" alt="Veyron" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="veyron-main">
+        <img src="images/veyron-1.jpg" alt="Veyron" class="product-img" loading="lazy" id="veyron-main">
       </div>
       <div class="thumb-strip">
         <img src="images/veyron-1.jpg" class="thumb active" onclick="switchImg(this,'veyron-main')" alt="1">
@@ -275,7 +274,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Veyron Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-veyron.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -285,7 +285,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- ROMANO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/romano-1.jpg" alt="Romano" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="romano-main">
+        <img src="images/romano-1.jpg" alt="Romano" class="product-img" loading="lazy" id="romano-main">
       </div>
       <div class="thumb-strip">
         <img src="images/romano-1.jpg" class="thumb active" onclick="switchImg(this,'romano-main')" alt="1">
@@ -294,7 +294,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Romano Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-romano.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -304,7 +305,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- PERISSA -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/perissa-1.jpg" alt="Perissa" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="perissa-main">
+        <img src="images/perissa-1.jpg" alt="Perissa" class="product-img" loading="lazy" id="perissa-main">
       </div>
       <div class="thumb-strip">
         <img src="images/perissa-1.jpg" class="thumb active" onclick="switchImg(this,'perissa-main')" alt="1">
@@ -314,7 +315,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Perissa Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-perissa.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -324,7 +326,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- STATU -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/statu-1.jpg" alt="Statu" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="statu-main">
+        <img src="images/statu-1.jpg" alt="Statu" class="product-img" loading="lazy" id="statu-main">
       </div>
       <div class="thumb-strip">
         <img src="images/statu-1.jpg" class="thumb active" onclick="switchImg(this,'statu-main')" alt="1">
@@ -334,7 +336,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Statu Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-statu.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -344,7 +347,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- CLARY -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/clary-1.jpg" alt="Clary" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="clary-main">
+        <img src="images/clary-1.jpg" alt="Clary" class="product-img" loading="lazy" id="clary-main">
       </div>
       <div class="thumb-strip">
         <img src="images/clary-1.jpg" class="thumb active" onclick="switchImg(this,'clary-main')" alt="1">
@@ -354,7 +357,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Clary Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-clary.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -364,7 +368,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BIANCO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bianco-1.jpg" alt="Bianco" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bianco-main">
+        <img src="images/bianco-1.jpg" alt="Bianco" class="product-img" loading="lazy" id="bianco-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bianco-1.jpg" class="thumb active" onclick="switchImg(this,'bianco-main')" alt="1">
@@ -373,7 +377,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Bianco Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-bianco.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -383,7 +388,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- LUCAS -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/lucas-1.jpg" alt="Lucas" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="lucas-main">
+        <img src="images/lucas-1.jpg" alt="Lucas" class="product-img" loading="lazy" id="lucas-main">
       </div>
       <div class="thumb-strip">
         <img src="images/lucas-1.jpg" class="thumb active" onclick="switchImg(this,'lucas-main')" alt="1">
@@ -393,7 +398,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Lucas Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-lucas.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -403,7 +409,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- MATILDA -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/matilda-1.jpg" alt="Matilda" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="matilda-main">
+        <img src="images/matilda-1.jpg" alt="Matilda" class="product-img" loading="lazy" id="matilda-main">
       </div>
       <div class="thumb-strip">
         <img src="images/matilda-1.jpg" class="thumb active" onclick="switchImg(this,'matilda-main')" alt="1">
@@ -412,7 +418,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Matilda Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-matilda.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -422,7 +429,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BOHEMY -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bohemy-1.jpg" alt="Bohemy" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bohemy-main">
+        <img src="images/bohemy-1.jpg" alt="Bohemy" class="product-img" loading="lazy" id="bohemy-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bohemy-1.jpg" class="thumb active" onclick="switchImg(this,'bohemy-main')" alt="1">
@@ -431,7 +438,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Bohemy Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-bohemy.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -441,7 +449,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BOLERO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bolero-1.jpg" alt="Bolero" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bolero-main">
+        <img src="images/bolero-1.jpg" alt="Bolero" class="product-img" loading="lazy" id="bolero-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bolero-1.jpg" class="thumb active" onclick="switchImg(this,'bolero-main')" alt="1">
@@ -451,7 +459,8 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
         <p class="product-name">Bolero Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span>        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-bolero.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -461,9 +470,9 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- DOREA -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/dorea-1.jpg" alt="Dorea" class="product-img" loading="lazy" id="dorea-main">
-        <span class="product-badge badge-last">Son 1 dəst</span>
-        <span class="product-badge badge-discount" style="top:46px;">-60%</span>
+        <img src="images/dorea-1.jpg" alt="Dorea Yataq Dəsti" class="product-img" loading="lazy" id="dorea-main">
+        <span class="product-badge badge-sale">-60%</span>
+        <span class="product-badge badge-last" style="top:14px; left:auto; right:14px;">Son 1 dəst</span>
       </div>
       <div class="thumb-strip">
         <img src="images/dorea-1.jpg" class="thumb active" onclick="switchImg(this,'dorea-main')" alt="1">
@@ -471,9 +480,12 @@ footer { background: #141412; padding: 64px 48px 32px; }
       </div>
       <div class="product-info">
         <p class="product-cat">Yataq dəsti</p>
-        <p class="product-name">Dorea Yataq dəsti</p>
-        <div class="price-row"><span class="price-current price-tbd">Qiymət soruşun</span></div>
-        <p class="price-note-text">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
+        <p class="product-name">Dorea Yataq Dəsti</p>
+        <div class="price-row">
+          <span class="price-current price-tbd">Qiymət soruşun</span>
+          <span class="price-save">-60% endirim</span>
+        </div>
+        <p class="price-note">Məhsulun qiyməti, dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha dəqiq məlumat üçün whatsapp üzərindən və ya mağazaya yaxınlaşaraq məlumat ala bilərsiniz.</p>
         <div class="product-actions">
           <a href="product-dorea.html" class="btn-view">Ətraflı bax</a>
         </div>
@@ -518,8 +530,6 @@ footer { background: #141412; padding: 64px 48px 32px; }
       <ul>
         <li><a href="about.html">Biz kimik?</a></li>
         <li><a href="index.html#showrooms">Mağazalarımız</a></li>
-        
-        
       </ul>
     </div>
 
