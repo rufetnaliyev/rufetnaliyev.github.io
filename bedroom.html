@@ -87,7 +87,7 @@ nav {
 
 /* ── PRODUCTS GRID ── */
 .products-section { padding: 56px 64px 96px; }
-.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
 .product-card {
   background: var(--warm-white); cursor: pointer;
@@ -97,7 +97,7 @@ nav {
 }
 .product-card:hover { border-color: #C8BFB5; box-shadow: 0 8px 32px rgba(28,28,26,.07); }
 
-.product-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--cream); }
+.product-img-wrap { position: relative; overflow: hidden; aspect-ratio: 5/4; background: var(--cream); }
 .product-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
 .product-card:hover .product-img { transform: scale(1.05); }
 
@@ -109,12 +109,12 @@ nav {
 .thumb { width: 52px; height: 40px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: border-color .2s; flex-shrink: 0; }
 .thumb.active, .thumb:hover { border-color: var(--accent); }
 
-.product-info { padding: 18px 18px 22px; }
+.product-info { padding: 12px 14px 16px; }
 .product-cat { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
-.product-name { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
+.product-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
 
 .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-.price-current { font-size: 20px; font-weight: 600; color: var(--charcoal); }
+.price-current { font-size: 16px; font-weight: 600; color: var(--charcoal); }
 .price-old { font-size: 14px; color: var(--mid); text-decoration: line-through; font-weight: 300; }
 .price-save { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; background: #FDECEA; color: #C0473C; }
 
@@ -177,7 +177,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
 .footer-legal a:hover { color: rgba(255,255,255,.5); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
@@ -239,7 +239,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- LAVIN -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/lavin-1.jpg" alt="Lavin Yataq dəsti" class="product-img" id="lavin-main-img">
+        <img src="images/lavin-1.jpg" alt="Lavin Yataq dəsti" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="lavin-main-img">
         <span class="product-badge badge-discount">-25%</span>
       </div>
       <div class="thumb-strip">
@@ -264,7 +264,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- VEYRON -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/veyron-1.jpg" alt="Veyron" class="product-img" id="veyron-main">
+        <img src="images/veyron-1.jpg" alt="Veyron" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="veyron-main">
       </div>
       <div class="thumb-strip">
         <img src="images/veyron-1.jpg" class="thumb active" onclick="switchImg(this,'veyron-main')" alt="1">
@@ -284,7 +284,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- ROMANO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/romano-1.jpg" alt="Romano" class="product-img" id="romano-main">
+        <img src="images/romano-1.jpg" alt="Romano" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="romano-main">
       </div>
       <div class="thumb-strip">
         <img src="images/romano-1.jpg" class="thumb active" onclick="switchImg(this,'romano-main')" alt="1">
@@ -304,7 +304,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- PERISSA -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/perissa-1.jpg" alt="Perissa" class="product-img" id="perissa-main">
+        <img src="images/perissa-1.jpg" alt="Perissa" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="perissa-main">
       </div>
       <div class="thumb-strip">
         <img src="images/perissa-1.jpg" class="thumb active" onclick="switchImg(this,'perissa-main')" alt="1">
@@ -325,7 +325,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- STATU -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/statu-1.jpg" alt="Statu" class="product-img" id="statu-main">
+        <img src="images/statu-1.jpg" alt="Statu" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="statu-main">
       </div>
       <div class="thumb-strip">
         <img src="images/statu-1.jpg" class="thumb active" onclick="switchImg(this,'statu-main')" alt="1">
@@ -346,7 +346,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- CLARY -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/clary-1.jpg" alt="Clary" class="product-img" id="clary-main">
+        <img src="images/clary-1.jpg" alt="Clary" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="clary-main">
       </div>
       <div class="thumb-strip">
         <img src="images/clary-1.jpg" class="thumb active" onclick="switchImg(this,'clary-main')" alt="1">
@@ -367,7 +367,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BIANCO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bianco-1.jpg" alt="Bianco" class="product-img" id="bianco-main">
+        <img src="images/bianco-1.jpg" alt="Bianco" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bianco-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bianco-1.jpg" class="thumb active" onclick="switchImg(this,'bianco-main')" alt="1">
@@ -387,7 +387,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- LUCAS -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/lucas-1.jpg" alt="Lucas" class="product-img" id="lucas-main">
+        <img src="images/lucas-1.jpg" alt="Lucas" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="lucas-main">
       </div>
       <div class="thumb-strip">
         <img src="images/lucas-1.jpg" class="thumb active" onclick="switchImg(this,'lucas-main')" alt="1">
@@ -408,7 +408,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- MATILDA -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/matilda-1.jpg" alt="Matilda" class="product-img" id="matilda-main">
+        <img src="images/matilda-1.jpg" alt="Matilda" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="matilda-main">
       </div>
       <div class="thumb-strip">
         <img src="images/matilda-1.jpg" class="thumb active" onclick="switchImg(this,'matilda-main')" alt="1">
@@ -428,7 +428,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BOHEMY -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bohemy-1.jpg" alt="Bohemy" class="product-img" id="bohemy-main">
+        <img src="images/bohemy-1.jpg" alt="Bohemy" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bohemy-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bohemy-1.jpg" class="thumb active" onclick="switchImg(this,'bohemy-main')" alt="1">
@@ -448,7 +448,7 @@ footer { background: #141412; padding: 64px 48px 32px; }
     <!-- BOLERO -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/bolero-1.jpg" alt="Bolero" class="product-img" id="bolero-main">
+        <img src="images/bolero-1.jpg" alt="Bolero" class="product-img" loading="lazy" onerror="this.style.background=\'#EDE8E0\';this.style.display=\'block\'" id="bolero-main">
       </div>
       <div class="thumb-strip">
         <img src="images/bolero-1.jpg" class="thumb active" onclick="switchImg(this,'bolero-main')" alt="1">
