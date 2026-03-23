@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -248,29 +249,16 @@ const originalTitle = document.title;
 document.addEventListener('visibilitychange', () => {
   document.title = document.hidden ? 'Bizi unutma :)' : originalTitle;
 });
-
-
 function switchImg(thumb, mainId) {
-  // 🔧 FIX: src yox, attribute götür
-  const newSrc = thumb.getAttribute("src");
-  document.getElementById(mainId).src = newSrc;
-
-  thumb.closest('.thumb-strip')
-    .querySelectorAll('.thumb')
-    .forEach(t => t.classList.remove('active'));
-
+  document.getElementById(mainId).src = thumb.src;
+  thumb.closest('.thumb-strip').querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
   thumb.classList.add('active');
 }
-
 const obs = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
-    if (e.isIntersecting) { 
-      setTimeout(() => e.target.classList.add('visible'), i * 80); 
-      obs.unobserve(e.target); 
-    }
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
