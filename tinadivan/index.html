@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tina  Divan Dəsti — SOLİTON MEBEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F7F4EF; --warm-white: #FDFCF9; --charcoal: #1C1C1A;
+  --mid: #6B6860; --accent: #B8946A; --light-border: #E4DDD3;
+  --serif: 'Playfair Display', serif; --sans: 'Nunito', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; background: rgba(253,252,249,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--light-border); }
+.nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; letter-spacing: .08em; color: var(--charcoal); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; font-weight: 500; }
+.nav-links a:hover { color: var(--charcoal); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-icon-btn { background: none; border: none; cursor: pointer; color: var(--mid); font-size: 18px; padding: 4px; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); margin: 5px 0; }
+
+/* ── BREADCRUMB BAR ── */
+.breadcrumb-bar { margin-top: 72px; padding: 14px 64px; background: var(--cream); border-bottom: 1px solid var(--light-border); display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); }
+.breadcrumb-bar a { color: var(--mid); text-decoration: none; transition: color .2s; }
+.breadcrumb-bar a:hover { color: var(--charcoal); }
+.breadcrumb-bar span { color: var(--light-border); }
+
+/* ── PRODUCT LAYOUT ── */
+.product-page { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 120px); }
+
+/* LEFT — GALLERY */
+.gallery-col { background: var(--cream); position: sticky; top: 72px; height: calc(100vh - 72px); display: flex; flex-direction: column; overflow: hidden; }
+.main-img-wrap { flex: 1; overflow: hidden; position: relative; }
+.main-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; cursor: zoom-in; }
+.main-img:hover { transform: scale(1.04); }
+.thumb-row { display: flex; gap: 8px; padding: 12px 16px; background: var(--warm-white); border-top: 1px solid var(--light-border); }
+.thumb { width: 72px; height: 56px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: border-color .2s, opacity .2s; opacity: .65; flex-shrink: 0; }
+.thumb.active, .thumb:hover { border-color: var(--accent); opacity: 1; }
+
+/* RIGHT — INFO */
+.info-col { padding: 56px 64px 80px; overflow-y: auto; }
+
+.product-category { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.product-category::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+.product-title { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 52px); font-weight: 400; line-height: 1.1; margin-bottom: 20px; }
+.product-title em { font-style: italic; color: var(--accent); }
+
+.price-block { margin-bottom: 28px; padding: 20px 24px; background: var(--cream); border-left: 3px solid var(--accent); }
+.price-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+.price-value { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--accent); }
+.price-note { font-size: 12px; color: var(--mid); margin-top: 6px; line-height: 1.6; }
+
+.divider { height: 1px; background: var(--light-border); margin: 28px 0; }
+
+.features-title { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+.features-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.features-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; line-height: 1.6; color: var(--charcoal); }
+.features-list li::before { content: '✦'; color: var(--accent); font-size: 9px; margin-top: 4px; flex-shrink: 0; }
+
+.specs-title { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); margin-bottom: 14px; }
+.specs-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+.specs-table tr { border-bottom: 1px solid var(--light-border); }
+.specs-table td { padding: 10px 0; font-size: 13px; }
+.specs-table td:first-child { color: var(--mid); width: 45%; }
+.specs-table td:last-child { color: var(--charcoal); font-weight: 500; }
+
+.cta-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 32px; background: #25D366; color: #fff; font-family: var(--sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
+.btn-whatsapp:hover { background: #1ebe5d; }
+.btn-whatsapp svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+.btn-call { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: none; border: 1px solid var(--charcoal); color: var(--charcoal); font-family: var(--sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background .2s, color .2s; }
+.btn-call:hover { background: var(--charcoal); color: var(--warm-white); }
+
+.reassurance { display: flex; gap: 24px; flex-wrap: wrap; }
+.reassurance-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mid); }
+.reassurance-item span { font-size: 16px; color: var(--accent); }
+
+/* ── DESCRIPTION SECTION ── */
+.description-section { padding: 80px 64px; background: var(--cream); border-top: 1px solid var(--light-border); }
+.desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.desc-eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.desc-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+.desc-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 20px; }
+.desc-title em { font-style: italic; }
+.desc-text { font-size: 14px; line-height: 1.9; color: var(--mid); }
+.desc-text p + p { margin-top: 14px; }
+.desc-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+.desc-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.desc-img-wrap:hover .desc-img { transform: scale(1.04); }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.45); text-decoration: none; transition: transform .25s; }
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+.whatsapp-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: var(--charcoal); color: #fff; font-size: 12px; padding: 6px 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+/* ── FOOTER ── */
+footer { background: #141412; padding: 64px 48px 32px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand-logo { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: .08em; color: #fff; display: block; text-decoration: none; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,.35); max-width: 240px; margin-bottom: 20px; }
+.footer-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.footer-social { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); text-decoration: none; transition: border-color .2s, color .2s; }
+.footer-social:hover { border-color: var(--accent); color: var(--accent); }
+.footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+.footer-col h4 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 18px; font-weight: 600; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a { font-size: 13px; color: rgba(255,255,255,.33); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: rgba(255,255,255,.8); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,.22); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,.22); text-decoration: none; }
+.footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .product-page { grid-template-columns: 1fr; }
+  .gallery-col { position: relative; top: auto; height: 60vw; min-height: 320px; }
+  .info-col { padding: 40px 32px 64px; }
+  .desc-grid { grid-template-columns: 1fr; gap: 40px; }
+  .description-section { padding: 56px 32px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .breadcrumb-bar { padding: 12px 20px; }
+  .gallery-col { height: 70vw; }
+  .info-col { padding: 32px 20px 56px; }
+  .description-section { padding: 48px 20px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-logo">SOLİTON MEBEL</a>
+  <ul class="nav-links">
+    <li><a href="/#categories">Kolleksiyamız</a></li>
+    <li><a href="/divan-destleri/">Divan dəstləri</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" title="Axtarış">⌕</button>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb-bar">
+  <a href="/">Ana səhifə</a>
+  <span>/</span>
+  <a href="/divan-destleri/">Türk Divan Dəstləri</a>
+  <span>/</span>
+  <span style="color: var(--charcoal);">Tina  Divan Dəsti</span>
+</div>
+
+<!-- ── PRODUCT LAYOUT ── -->
+<div class="product-page">
+
+  <!-- GALLERY -->
+  <div class="gallery-col">
+    <div class="main-img-wrap">
+      <img src="/images/tinadivan-1.jpg" alt="Tina  Divan Dəsti" class="main-img" id="main-img">
+    </div>
+    <div class="thumb-row">
+      <img src="/images/tinadivan-1.jpg" class="thumb active" onclick="switchImg(this)" alt="Şəkil 1">
+      <img src="/images/tinadivan-2.jpg" class="thumb" onclick="switchImg(this)" alt="Şəkil 2">
+      <!-- Əlavə şəkillər üçün burada davam edin: -->
+      <!-- <img src="/images/tinadivan-3.jpg" class="thumb" onclick="switchImg(this)" alt="Şəkil 3"> -->
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-col">
+
+    <p class="product-category">Divan dəsti</p>
+    <h1 class="product-title">  <em>Tina Divan Dəsti</em></h1>
+
+    <div class="price-block">
+      <p class="price-label">Qiymət</p>
+      <p class="price-value">Qiymət soruşun</p>
+      <p class="price-note">Məhsulun qiyməti dəstə daxil olan predmetlərin seçiminə görə fərqlənə bilər. Daha ətraflı məlumat üçün bizimlə əlaqə saxlayın.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="features-title">Xüsusiyyətlər</p>
+    <ul class="features-list">
+      <li>Türkiyə istehsalı, premium keyfiyyətli materiallar</li>
+      <li>Dəst divan, kreslo və köməkçi elementlər daxildir</li>
+      <li>Möhkəm taxta çərçivə konstruksiyası</li>
+      <li>Yüksək sıxlıqlı köpük doldurucu — uzunömürlü forma</li>
+      <li>Müxtəlif parça və rəng seçimləri mövcuddur</li>
+      <li>Bakı daxili pulsuz çatdırılma və quraşdırma</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="specs-title">Texniki məlumatlar</p>
+    <table class="specs-table">
+      <tr><td>Ölkə</td><td>Türkiyə</td></tr>
+      <tr><td>Növ</td><td>Divan dəsti</td></tr>
+      <tr><td>Dəst tərkibi</td><td>Divan + Kreslo (seçimə görə)</td></tr>
+      <tr><td>Materiallar</td><td>Parça / Dəri seçimi</td></tr>
+      <tr><td>Rənglər</td><td>Çoxlu seçim mövcuddur</td></tr>
+      <tr><td>Zəmanət</td><td>1 il</td></tr>
+      <tr><td>Çatdırılma</td><td>Bakı daxili pulsuz</td></tr>
+    </table>
+
+    <div class="cta-group">
+      <a href="https://wa.me/994703904656?text=Salam!%20Bohemy%20Divan%20D%C9%99sti%20haqqında%20məlumat%20almaq%20istəyirəm." target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp ilə soruşun
+      </a>
+      <a href="tel:+994703904656" class="btn-call">📞 Zəng edin: +994 70 390 46 56</a>
+    </div>
+
+    <div class="reassurance">
+      <div class="reassurance-item"><span>🚚</span> Pulsuz çatdırılma</div>
+      <div class="reassurance-item"><span>🔧</span> Pulsuz quraşdırma</div>
+      <div class="reassurance-item"><span>🛡️</span> 1 il zəmanət</div>
+      <div class="reassurance-item"><span>🇹🇷</span> Türkiyə istehsalı</div>
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/994703904656" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">WhatsApp ilə yazın</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-brand-logo">SOLİTON MEBEL</a>
+      <p class="footer-brand-desc">Evinizin hər küncünü bizim məhsullarımızla bəzəyin.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/soliton.mebel/" target="_blank" class="footer-social" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@soliton.mebel/" target="_blank" class="footer-social" title="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+        <a href="https://wa.me/994703904656" target="_blank" class="footer-social" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kolleksiyamız</h4>
+      <ul>
+        <li><a href="/yataq-destleri/">Türk Yataq dəstləri</a></li>
+        <li><a href="/qonaq-destleri/">Türk Qonaq dəstləri</a></li>
+        <li><a href="/divan-destleri/">Türk divan dəstləri</a></li>
+        <li><a href="/kunc-divanlari/">Türk künc divanları</a></li>
+        <li><a href="#">Azərbaycan istehsalı yataq dəstləri</a></li>
+        <li><a href="#">Azərbaycan istehsalı divan dəstləri</a></li>
+        <li><a href="#">Digər məhsullar</a></li>
+        <li><a href="#">Outlet</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Haqqımızda</h4>
+      <ul>
+        <li><a href="/haqqimizda/">Biz kimik?</a></li>
+        <li><a href="/#showrooms">Mağazalarımız</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>MÜŞTƏRİ XİDMƏTİ</h4>
+      <ul>
+        <li><a href="#">Çatdırılma və quraşdırma</a></li>
+        <li><a href="#">Zəmanət</a></li>
+        <li><a href="/suallar/">Tez-tez verilən suallar</a></li>
+        <li><a href="https://wa.me/994703904656" target="_blank">Bizimlə əlaqə</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 SOLİTON MEBEL. Bütün hüquqlar qorunur.</p>
+    <div class="footer-legal">
+      <a href="#">Məxfilik siyasəti</a>
+      <a href="#">İstifadə şərtləri</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const originalTitle = document.title;
+document.addEventListener('visibilitychange', () => {
+  document.title = document.hidden ? 'Bizi unutma :)' : originalTitle;
+});
+
+function switchImg(thumb) {
+  document.getElementById('main-img').src = thumb.src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 120);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
