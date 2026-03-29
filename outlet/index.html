@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outlet — SOLİTON MEBEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F7F4EF; --warm-white: #FDFCF9; --charcoal: #1C1C1A;
+  --mid: #6B6860; --accent: #B8946A; --red: #C0473C;
+  --light-border: #E4DDD3;
+  --serif: 'Playfair Display', serif; --sans: 'Nunito', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; background: rgba(253,252,249,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--light-border); }
+.nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; letter-spacing: .08em; color: var(--charcoal); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; font-weight: 500; }
+.nav-links a:hover { color: var(--charcoal); }
+.nav-links a.active { color: var(--red); border-bottom: 1px solid var(--red); padding-bottom: 2px; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-icon-btn { background: none; border: none; cursor: pointer; color: var(--mid); font-size: 18px; padding: 4px; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); margin: 5px 0; }
+
+/* ── HERO ── */
+.page-hero { margin-top: 72px; height: 280px; position: relative; overflow: hidden; background: var(--charcoal); display: flex; align-items: flex-end; }
+.page-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .18; }
+.page-hero-pattern { position: absolute; inset: 0; opacity: .04; background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 18px 18px; }
+.hero-stripe { position: absolute; top: 0; right: 0; width: 300px; height: 300px; overflow: hidden; pointer-events: none; }
+.hero-stripe::after { content: '90%-ə qədər endirim'; position: absolute; top: 60px; right: -60px; background: var(--red); color: #fff; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; padding: 8px 72px; transform: rotate(45deg); white-space: nowrap; font-family: var(--sans); }
+.page-hero-content { position: relative; z-index: 2; padding: 0 56px 44px; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,.4); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,.7); }
+.breadcrumb span { color: rgba(255,255,255,.2); }
+.page-hero-title { font-family: var(--serif); font-size: clamp(44px, 5.5vw, 72px); font-weight: 400; color: #fff; line-height: 1.05; }
+.page-hero-title em { font-style: italic; color: var(--red); }
+.hero-sub { font-size: 13px; color: rgba(255,255,255,.42); margin-top: 8px; }
+
+/* ── PAGE BODY ── */
+.page-body { display: flex; align-items: flex-start; padding: 0 0 96px; }
+
+/* ── SIDEBAR ── */
+.sidebar { width: 240px; flex-shrink: 0; position: sticky; top: 72px; height: calc(100vh - 72px); overflow-y: auto; background: var(--cream); border-right: 1px solid var(--light-border); padding: 28px 0; }
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--light-border); }
+.sidebar-title { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--mid); padding: 0 22px 16px; font-weight: 600; }
+.cat-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 22px; background: none; border: none; border-left: 3px solid transparent; cursor: pointer; font-size: 13px; color: var(--mid); text-align: left; transition: all .18s; font-family: var(--sans); gap: 8px; }
+.cat-btn:hover { background: var(--warm-white); color: var(--charcoal); border-left-color: var(--light-border); }
+.cat-btn.active { background: var(--warm-white); color: var(--charcoal); font-weight: 600; border-left-color: var(--red); }
+.cat-btn-left { display: flex; align-items: center; gap: 10px; }
+.cat-icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+.cat-count { font-size: 10px; background: var(--light-border); color: var(--mid); padding: 2px 7px; border-radius: 20px; flex-shrink: 0; min-width: 20px; text-align: center; transition: background .18s, color .18s; }
+.cat-btn.active .cat-count { background: var(--red); color: #fff; }
+.sidebar-divider { height: 1px; background: var(--light-border); margin: 10px 22px; }
+.sidebar-section-label { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); padding: 8px 22px 4px; font-weight: 600; }
+
+/* ── MAIN CONTENT ── */
+.main-content { flex: 1; min-width: 0; padding: 28px 40px; }
+
+.content-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--light-border); gap: 16px; flex-wrap: wrap; }
+.content-title { font-family: var(--serif); font-size: 26px; font-weight: 400; }
+.content-title em { font-style: italic; color: var(--red); }
+.content-meta { font-size: 12px; color: var(--mid); margin-top: 3px; }
+.content-meta strong { color: var(--charcoal); }
+.sort-select { padding: 8px 14px; font-size: 12px; background: var(--warm-white); border: 1px solid var(--light-border); color: var(--mid); font-family: var(--sans); cursor: pointer; outline: none; }
+
+/* Empty state */
+.empty-state { display: none; text-align: center; padding: 80px 20px; }
+.empty-state.visible { display: block; }
+.empty-icon { font-size: 40px; margin-bottom: 16px; opacity: .3; }
+.empty-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--mid); margin-bottom: 8px; }
+.empty-desc { font-size: 13px; color: var(--mid); }
+
+/* ── PRODUCT GRID ── */
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.product-grid.hidden { display: none; }
+
+/* ── PRODUCT CARD ── */
+.product-card { background: var(--warm-white); border: 1px solid var(--light-border); transition: border-color .3s, box-shadow .3s; position: relative; overflow: hidden; }
+.product-card:hover { border-color: #C8BFB5; box-shadow: 0 8px 28px rgba(28,28,26,.08); }
+
+.product-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--cream); }
+.product-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.product-card:hover .product-img { transform: scale(1.05); }
+
+/* Big discount badge */
+.badge-discount { position: absolute; top: 0; left: 0; background: var(--red); color: #fff; z-index: 2; padding: 8px 14px; line-height: 1; }
+.badge-pct { font-family: var(--serif); font-size: 24px; font-weight: 600; display: block; }
+.badge-label { font-family: var(--sans); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; display: block; margin-top: 2px; }
+
+/* Category tag */
+.badge-cat { position: absolute; top: 12px; right: 12px; background: rgba(28,28,26,.72); color: rgba(255,255,255,.9); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 9px; backdrop-filter: blur(4px); z-index: 2; }
+
+/* Thumb strip */
+.thumb-strip { display: flex; gap: 6px; padding: 8px 10px; background: var(--cream); border-top: 1px solid var(--light-border); }
+.thumb { width: 44px; height: 34px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: border-color .2s; flex-shrink: 0; }
+.thumb.active, .thumb:hover { border-color: var(--accent); }
+
+/* Product info */
+.product-info { padding: 14px 14px 16px; }
+.product-cat { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.product-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
+
+/* Price block */
+.price-block { background: var(--cream); border-left: 3px solid var(--red); padding: 10px 12px; margin-bottom: 12px; }
+.price-row-main { display: flex; align-items: baseline; gap: 10px; margin-bottom: 5px; }
+.price-new { font-size: 22px; font-weight: 700; color: var(--red); }
+.price-old { font-size: 13px; color: var(--mid); text-decoration: line-through; font-weight: 300; }
+.price-saving { font-size: 11px; color: var(--mid); }
+.price-saving strong { color: var(--red); font-weight: 600; }
+
+.btn-view { display: block; width: 100%; padding: 11px 0; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--charcoal); color: var(--warm-white); border: none; cursor: pointer; font-family: var(--sans); text-decoration: none; transition: background .2s; }
+.btn-view:hover { background: var(--red); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.45); text-decoration: none; transition: transform .25s; }
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+.whatsapp-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: var(--charcoal); color: #fff; font-size: 12px; padding: 6px 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+/* ── FOOTER ── */
+footer { background: #141412; padding: 64px 48px 32px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand-logo { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: .08em; color: #fff; display: block; text-decoration: none; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,.35); max-width: 240px; margin-bottom: 20px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-social { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); text-decoration: none; transition: border-color .2s, color .2s; }
+.footer-social:hover { border-color: var(--accent); color: var(--accent); }
+.footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+.footer-col h4 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 18px; font-weight: 600; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a { font-size: 13px; color: rgba(255,255,255,.33); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: rgba(255,255,255,.8); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,.22); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,.22); text-decoration: none; }
+.footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) {
+  .page-body { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--light-border); padding: 12px 0 4px; display: flex; flex-wrap: wrap; overflow-x: auto; }
+  .sidebar-title, .sidebar-divider, .sidebar-section-label { display: none; }
+  .cat-btn { width: auto; padding: 7px 14px; border-left: none; border-bottom: 2px solid transparent; font-size: 12px; white-space: nowrap; }
+  .cat-btn.active { border-left: none; border-bottom-color: var(--red); background: none; }
+  .main-content { padding: 20px 20px 56px; }
+  .product-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .page-hero-content { padding: 0 20px 32px; }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">SOLİTON MEBEL</a>
+  <ul class="nav-links">
+    <li><a href="/#categories">Kolleksiyamız</a></li>
+    <li><a href="/outlet/" class="active">Outlet</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn">⌕</button>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <img src="/images/talyadivan-1.jpg" alt="Outlet" class="page-hero-img">
+  <div class="page-hero-pattern"></div>
+  <div class="hero-stripe"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="/">Ana səhifə</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Outlet</span>
+    </div>
+    <h1 class="page-hero-title"><em>Outlet</em></h1>
+    <p class="hero-sub">Seçilmiş məhsullarda 90%-ə qədər endirim — məhdud sayda</p>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Kateqoriyalar</div>
+
+    <button class="cat-btn active" data-cat="all" data-label="Bütün məhsullar">
+      <span class="cat-btn-left"><span class="cat-icon">🛋️</span>Bütün məhsullar</span>
+      <span class="cat-count" id="count-all">0</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section-label">Yataq otağı</div>
+    <button class="cat-btn" data-cat="carpayı" data-label="Çarpayı"><span class="cat-btn-left"><span class="cat-icon">🛏️</span>Çarpayı</span><span class="cat-count" id="count-carpayı">0</span></button>
+    <button class="cat-btn" data-cat="makyaj-masasi" data-label="Makyaj masası"><span class="cat-btn-left"><span class="cat-icon">🪞</span>Makyaj masası</span><span class="cat-count" id="count-makyaj-masasi">0</span></button>
+    <button class="cat-btn" data-cat="tumba" data-label="Tumba"><span class="cat-btn-left"><span class="cat-icon">🗄️</span>Tumba</span><span class="cat-count" id="count-tumba">0</span></button>
+    <button class="cat-btn" data-cat="camasırlıq" data-label="Çamaşırlıq"><span class="cat-btn-left"><span class="cat-icon">👗</span>Çamaşırlıq</span><span class="cat-count" id="count-camasırlıq">0</span></button>
+    <button class="cat-btn" data-cat="4-qapılı-garderob" data-label="4 qapılı Garderob"><span class="cat-btn-left"><span class="cat-icon">🚪</span>4 qapılı Garderob</span><span class="cat-count" id="count-4-qapılı-garderob">0</span></button>
+    <button class="cat-btn" data-cat="5-qapılı-garderob" data-label="5 qapılı Garderob"><span class="cat-btn-left"><span class="cat-icon">🚪</span>5 qapılı Garderob</span><span class="cat-count" id="count-5-qapılı-garderob">0</span></button>
+    <button class="cat-btn" data-cat="6-qapılı-garderob" data-label="6 qapılı Garderob"><span class="cat-btn-left"><span class="cat-icon">🚪</span>6 qapılı Garderob</span><span class="cat-count" id="count-6-qapılı-garderob">0</span></button>
+    <button class="cat-btn" data-cat="surgulugarderob" data-label="Sürgülü Garderob"><span class="cat-btn-left"><span class="cat-icon">🗃️</span>Sürgülü Garderob</span><span class="cat-count" id="count-surgulugarderob">0</span></button>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section-label">Qonaq otağı</div>
+    <button class="cat-btn" data-cat="stol" data-label="Stol"><span class="cat-btn-left"><span class="cat-icon">🪵</span>Stol</span><span class="cat-count" id="count-stol">0</span></button>
+    <button class="cat-btn" data-cat="stul" data-label="Stul"><span class="cat-btn-left"><span class="cat-icon">🪑</span>Stul</span><span class="cat-count" id="count-stul">0</span></button>
+    <button class="cat-btn" data-cat="bufe" data-label="Bufe"><span class="cat-btn-left"><span class="cat-icon">🍶</span>Bufe</span><span class="cat-count" id="count-bufe">0</span></button>
+    <button class="cat-btn" data-cat="gumusluq" data-label="Gümüşlük"><span class="cat-btn-left"><span class="cat-icon">🥄</span>Gümüşlük</span><span class="cat-count" id="count-gumusluq">0</span></button>
+    <button class="cat-btn" data-cat="vitrin" data-label="Vitrin"><span class="cat-btn-left"><span class="cat-icon">🪟</span>Vitrin</span><span class="cat-count" id="count-vitrin">0</span></button>
+    <button class="cat-btn" data-cat="tv-altligi" data-label="Tv altlığı"><span class="cat-btn-left"><span class="cat-icon">📺</span>Tv altlığı</span><span class="cat-count" id="count-tv-altligi">0</span></button>
+    <button class="cat-btn" data-cat="jurnal-masasi" data-label="Jurnal masası"><span class="cat-btn-left"><span class="cat-icon">☕</span>Jurnal masası</span><span class="cat-count" id="count-jurnal-masasi">0</span></button>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section-label">Gənc otağı</div>
+    <button class="cat-btn" data-cat="genc-carpayı" data-label="Gənc çarpayı"><span class="cat-btn-left"><span class="cat-icon">🛏️</span>Gənc çarpayı</span><span class="cat-count" id="count-genc-carpayı">0</span></button>
+    <button class="cat-btn" data-cat="genc-tumba" data-label="Gənc tumba"><span class="cat-btn-left"><span class="cat-icon">📦</span>Gənc tumba</span><span class="cat-count" id="count-genc-tumba">0</span></button>
+    <button class="cat-btn" data-cat="yazı-masasi" data-label="Yazı masası"><span class="cat-btn-left"><span class="cat-icon">✏️</span>Yazı masası</span><span class="cat-count" id="count-yazı-masasi">0</span></button>
+    <button class="cat-btn" data-cat="kitablıq" data-label="Kitablıq"><span class="cat-btn-left"><span class="cat-icon">📚</span>Kitablıq</span><span class="cat-count" id="count-kitablıq">0</span></button>
+    <button class="cat-btn" data-cat="3-qapılı-garderob" data-label="3 qapılı Garderob"><span class="cat-btn-left"><span class="cat-icon">🚪</span>3 qapılı Garderob</span><span class="cat-count" id="count-3-qapılı-garderob">0</span></button>
+    <button class="cat-btn" data-cat="2-qapılı-garderob" data-label="2 qapılı Garderob"><span class="cat-btn-left"><span class="cat-icon">🚪</span>2 qapılı Garderob</span><span class="cat-count" id="count-2-qapılı-garderob">0</span></button>
+    <button class="cat-btn" data-cat="genc-makyaj-masasi" data-label="Gənc makyaj masası"><span class="cat-btn-left"><span class="cat-icon">💄</span>Gənc makyaj masası</span><span class="cat-count" id="count-genc-makyaj-masasi">0</span></button>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-content">
+    <div class="content-topbar">
+      <div>
+        <div class="content-title" id="content-title">Bütün <em>məhsullar</em></div>
+        <div class="content-meta"><strong id="visible-count">0</strong> məhsul tapıldı</div>
+      </div>
+      <select class="sort-select" id="sort-select">
+        <option value="default">Sıralama: Tövsiyə olunan</option>
+        <option value="price-asc">Qiymət: Azdan çoxa</option>
+        <option value="price-desc">Qiymət: Çoxdan aza</option>
+        <option value="discount-desc">Endirim: Ən çox əvvəl</option>
+      </select>
+    </div>
+
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">📦</div>
+      <div class="empty-title">Bu kateqoriyada məhsul yoxdur</div>
+      <div class="empty-desc">Hazırda bu kateqoriyada outlet məhsulu mövcud deyil.</div>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+      <!--
+      ════════════════════════════════════════════════════════════
+      MƏHSUL ƏLAVƏ ETMƏK ÜÇÜN AŞAĞIDAKI STRUKTURU KOPYALAYIN
+      ════════════════════════════════════════════════════════════
+
+      data-cat      = kateqoriya (siyahı aşağıda)
+      data-price    = endirimli qiymət (rəqəm, AZN)
+      data-discount = endirim faizi (rəqəm, məs: 38)
+
+      KATEQORİYA SİYAHISI (data-cat üçün):
+        carpayı | makyaj-masasi | tumba | camasırlıq
+        4-qapılı-garderob | 5-qapılı-garderob | 6-qapılı-garderob | surgulugarderob
+        stol | stul | bufe | gumusluq | vitrin | tv-altligi | jurnal-masasi
+        genc-carpayı | genc-tumba | yazı-masasi | kitablıq
+        3-qapılı-garderob | 2-qapılı-garderob | genc-makyaj-masasi
+
+      <div class="product-card reveal" data-cat="KATEQORİYA" data-price="ENDİRİMLİ_QİYMƏT" data-discount="FAİZ">
+        <div class="product-img-wrap">
+          <div class="badge-discount">
+            <span class="badge-pct">−FAİZ%</span>
+            <span class="badge-label">Outlet</span>
+          </div>
+          <span class="badge-cat">Kateqoriya adı</span>
+          <img src="/images/ŞƏKIL-1.jpg" alt="Məhsul adı" class="product-img" id="UNIKAL-ID-main">
+        </div>
+        <div class="thumb-strip">
+          <img src="/images/ŞƏKIL-1.jpg" class="thumb active" onclick="switchImg(this,'UNIKAL-ID-main')" alt="1">
+          <img src="/images/ŞƏKIL-2.jpg" class="thumb" onclick="switchImg(this,'UNIKAL-ID-main')" alt="2">
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Kateqoriya adı</p>
+          <p class="product-name">Məhsul Adı</p>
+          <div class="price-block">
+            <div class="price-row-main">
+              <span class="price-new">ENDİRİMLİ AZN</span>
+              <span class="price-old">KÖHNƏQİYMƏT AZN</span>
+            </div>
+            <div class="price-saving">Qənaət: <strong>FƏRQ AZN</strong> · FAİZ% endirim</div>
+          </div>
+          <a href="/MƏHSUL-URL/" class="btn-view">Ətraflı bax</a>
+        </div>
+      </div>
+      ════════════════════════════════════════════════════════════
+      -->
+
+      <!-- ═══ TALYA DİVAN — NÜMUNƏ MƏHSUL ═══ -->
+      <div class="product-card reveal" data-cat="stol" data-price="620" data-discount="38">
+        <div class="product-img-wrap">
+          <div class="badge-discount">
+            <span class="badge-pct">−38%</span>
+            <span class="badge-label">Outlet</span>
+          </div>
+          <span class="badge-cat">Stol</span>
+          <img src="/images/talyadivan-1.jpg" alt="Talya Divan" class="product-img" id="talya-main">
+        </div>
+        <div class="thumb-strip">
+          <img src="/images/talyadivan-1.jpg" class="thumb active" onclick="switchImg(this,'talya-main')" alt="1">
+          <!-- <img src="/images/talyadivan-2.jpg" class="thumb" onclick="switchImg(this,'talya-main')" alt="2"> -->
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Stol</p>
+          <p class="product-name">Talya Divan</p>
+          <div class="price-block">
+            <div class="price-row-main">
+              <span class="price-new">620 AZN</span>
+              <span class="price-old">1.000 AZN</span>
+            </div>
+            <div class="price-saving">Qənaət: <strong>380 AZN</strong> · 38% endirim</div>
+          </div>
+          <a href="/talyadivan/" class="btn-view">Ətraflı bax</a>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </main>
+</div><!-- /page-body -->
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/994703904656" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">WhatsApp ilə yazın</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-brand-logo">SOLİTON MEBEL</a>
+      <p class="footer-brand-desc">Evinizin hər küncünü bizim məhsullarımızla bəzəyin.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/soliton.mebel/" target="_blank" class="footer-social" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@soliton.mebel/" target="_blank" class="footer-social" title="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+        <a href="https://wa.me/994703904656" target="_blank" class="footer-social" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kolleksiyamız</h4>
+      <ul>
+        <li><a href="/yataq-destleri/">Türk Yataq dəstləri</a></li>
+        <li><a href="/qonaq-destleri/">Türk Qonaq dəstləri</a></li>
+        <li><a href="/divan-destleri/">Türk divan dəstləri</a></li>
+        <li><a href="/kunc-divanlari/">Türk künc divanları</a></li>
+        <li><a href="#">Azərbaycan istehsalı yataq dəstləri</a></li>
+        <li><a href="#">Azərbaycan istehsalı divan dəstləri</a></li>
+        <li><a href="#">Digər məhsullar</a></li>
+        <li><a href="/outlet/">Outlet</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Haqqımızda</h4>
+      <ul>
+        <li><a href="/haqqimizda/">Biz kimik?</a></li>
+        <li><a href="/#showrooms">Mağazalarımız</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>MÜŞTƏRİ XİDMƏTİ</h4>
+      <ul>
+        <li><a href="#">Çatdırılma və quraşdırma</a></li>
+        <li><a href="#">Zəmanət</a></li>
+        <li><a href="/suallar/">Tez-tez verilən suallar</a></li>
+        <li><a href="https://wa.me/994703904656" target="_blank">Bizimlə əlaqə</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 SOLİTON MEBEL. Bütün hüquqlar qorunur.</p>
+    <div class="footer-legal"><a href="#">Məxfilik siyasəti</a><a href="#">İstifadə şərtləri</a></div>
+  </div>
+</footer>
+
+<script>
+const originalTitle = document.title;
+document.addEventListener('visibilitychange', () => { document.title = document.hidden ? 'Bizi unutma :)' : originalTitle; });
+
+function switchImg(thumb, mainId) {
+  document.getElementById(mainId).src = thumb.src;
+  thumb.closest('.thumb-strip').querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+function updateCounts() {
+  const all = document.querySelectorAll('.product-card');
+  document.getElementById('count-all').textContent = all.length;
+  document.querySelectorAll('.cat-btn[data-cat]').forEach(btn => {
+    const cat = btn.dataset.cat;
+    if (cat === 'all') return;
+    const n = document.querySelectorAll(`.product-card[data-cat="${cat}"]`).length;
+    const el = document.getElementById('count-' + cat);
+    if (el) el.textContent = n;
+  });
+}
+
+function applyFilter(cat) {
+  const cards = document.querySelectorAll('.product-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat;
+    card.style.display = show ? '' : 'none';
+    if (show) { visible++; card.classList.add('visible'); }
+  });
+  document.getElementById('visible-count').textContent = visible;
+
+  const btn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
+  const label = btn ? btn.dataset.label : 'Bütün məhsullar';
+  const words = label.split(' ');
+  const last = words.pop();
+  document.getElementById('content-title').innerHTML = (words.length ? words.join(' ') + ' ' : '') + `<em>${last}</em>`;
+
+  const grid = document.getElementById('product-grid');
+  const empty = document.getElementById('empty-state');
+  if (visible === 0) { grid.classList.add('hidden'); empty.classList.add('visible'); }
+  else { grid.classList.remove('hidden'); empty.classList.remove('visible'); }
+}
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilter(btn.dataset.cat);
+  });
+});
+
+document.getElementById('sort-select').addEventListener('change', function () {
+  const grid = document.getElementById('product-grid');
+  const cards = Array.from(grid.querySelectorAll('.product-card'));
+  const val = this.value;
+  cards.sort((a, b) => {
+    const pa = parseFloat(a.dataset.price) || 0, pb = parseFloat(b.dataset.price) || 0;
+    const da = parseFloat(a.dataset.discount) || 0, db = parseFloat(b.dataset.discount) || 0;
+    if (val === 'price-asc') return pa - pb;
+    if (val === 'price-desc') return pb - pa;
+    if (val === 'discount-desc') return db - da;
+    return 0;
+  });
+  cards.forEach(c => grid.appendChild(c));
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+updateCounts();
+applyFilter('all');
+</script>
+</body>
+</html>
