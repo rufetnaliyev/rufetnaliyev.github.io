@@ -348,28 +348,31 @@ footer { background: #141412; padding: 64px 48px 32px; }
 
 
       
-
-<div class="product-card reveal" data-cat="vitrin" data-price="480" data-discount="60" style="width:auto; max-width:none;">
-  <div class="product-img-wrap" style="width:auto; height:auto; display:flex; justify-content:center; align-items:center;">
-    <div class="badge-discount" style="position:absolute; top:10px; left:10px; display:flex; gap:5px;">
-      <span class="badge-pct" style="background:#f00; color:#fff; padding:2px 5px;">−60%</span>
-      <span class="badge-label" style="background:#000; color:#fff; padding:2px 5px;">Outlet</span>
+<div class="product-card reveal" data-cat="vitrin" data-price="480" data-discount="60" style="width:auto; max-width:none; border:1px solid #eee; padding:10px; margin-bottom:20px;">
+  <div class="product-img-wrap" style="width:auto; height:auto; display:block; text-align:center; position:relative;">
+    <div class="badge-discount" style="position:absolute; top:10px; left:10px; display:flex; gap:5px; z-index:2;">
+      <span class="badge-pct" style="background:#b23a3a; color:#fff; padding:2px 5px; font-size:14px;">−60%</span>
+      <span class="badge-label" style="background:#333; color:#fff; padding:2px 5px; font-size:12px;">Outlet</span>
     </div>
-    <span class="badge-cat" style="position:absolute; top:10px; right:10px; background:#333; color:#fff; padding:2px 5px;">vitrin</span>
-    <img src="/images/parisvitrin.jpg" alt="Paris Vitrin" class="product-img" id="parisvitrin-main" style="width:auto; height:auto; max-width:none; max-height:none;">
+    <span class="badge-cat" style="position:absolute; top:10px; right:10px; background:#333; color:#fff; padding:2px 5px; font-size:12px; z-index:2;">vitrin</span>
+    <img src="/images/parisvitrin.jpg" alt="Paris Vitrin" id="parisvitrin-main" style="width:auto; height:auto; max-width:none; max-height:none; display:inline-block;">
   </div>
-  <div class="thumb-strip" style="margin-top:10px; display:flex; gap:5px;">
-    <img src="/images/parisvitrin.jpg" class="thumb active" onclick="switchImg(this,'parisvitrin-main')" alt="1" style="width:60px; height:auto; cursor:pointer;">
+
+  <div class="thumb-strip" style="margin-top:10px; display:flex; gap:5px; justify-content:center;">
+    <img src="/images/parisvitrin.jpg" class="thumb active" onclick="switchImg(this,'parisvitrin-main')" alt="1" style="width:60px; height:auto; cursor:pointer; border:1px solid #ccc;">
   </div>
-  <div class="product-info">
-    <p class="product-cat">vitrin</p>
-    <p class="product-name">Paris Vitrin</p>
-    <div class="price-block">
-      <div class="price-row-main">
-        <span class="price-new">192 AZN</span>
-        <span class="price-old">480 AZN</span>
+
+  <div class="product-info" style="margin-top:10px; text-align:center;">
+    <p class="product-cat" style="font-size:12px; color:#666; margin:0;">vitrin</p>
+    <p class="product-name" style="font-size:16px; font-weight:600; margin:2px 0;">Paris Vitrin</p>
+    <div class="price-block" style="margin-top:5px;">
+      <div class="price-row-main" style="display:flex; justify-content:center; gap:10px; align-items:center;">
+        <span class="price-new" style="color:#b23a3a; font-weight:600;">192 AZN</span>
+        <span class="price-old" style="text-decoration:line-through; color:#999;">480 AZN</span>
       </div>
-      <div class="price-saving">Qənaət: <strong>288 AZN</strong> · 60% endirim</div>
+      <div class="price-saving" style="font-size:12px; color:#666; margin-top:3px;">
+        Qənaət: <strong>288 AZN</strong> · 60% endirim
+      </div>
     </div>
   </div>
 </div>
